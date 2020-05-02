@@ -8,5 +8,5 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-          jq '.event' "$GITHUB_CONTEXT"
-          echo "$GITHUB_CONTEXT"
+          echo "$GITHUB_CONTEXT" | tee github-context.json
+          jq '.event' github-context.json
