@@ -1,5 +1,8 @@
-on: push
-
+on:
+  push:
+    branches: master
+  schedule:
+    - cron: '0 * * * *'
 jobs:
   one:
     runs-on: ubuntu-16.04
@@ -8,5 +11,5 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-          echo "$GITHUB_CONTEXT" > github-context.json
+          echo "$GITHUB_CONTEXT" | tee github-context.json
           jq '.event.commits[0] | { message: .message, stamp: .timestamp }' github-context.json
