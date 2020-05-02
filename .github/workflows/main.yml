@@ -9,4 +9,4 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo "$GITHUB_CONTEXT" | tee github-context.json
-          jq '.event' github-context.json
+          jq '.event.commits' github-context.json
