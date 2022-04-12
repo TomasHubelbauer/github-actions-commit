@@ -6,5 +6,4 @@ jobs:
     steps:
       - name: Dump GitHub context
         run: |
-          echo "${{toJson(github)}}" | tee github-context.json
-          jq '.event.commits[0] | { message: .message, stamp: .timestamp }' github-context.json
+          echo "${{toJson(github)}}"
